@@ -7,7 +7,7 @@ RUN apt-get update
 RUN apt-get install -y nginx openssl
 
 # Create SSL directory
-RUN mkdir /etc/nginx/SSL
+RUN mkdir /etc/nginx/ssl
 # Generate SSL Certificate
 RUN openssl req \
         # Creates a new 4096-bit RSA key pair
