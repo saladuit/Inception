@@ -1,15 +1,14 @@
 #!/bin/sh
 
-if [ -f ./wp-config.php]
+if [ -f ./wp-config.php ]
 then
     echo "Wordpress already downloaded"
 else
     #Download wordpress and all config file
 	wget http://wordpress.org/latest.tar.gz
-	tar xfz latest.tar.gz
+	tar xfz latest.tar.gz --no-same-owner
 	mv wordpress/* .
-	rm -rf latest.tar.gz
-	rm -rf wordpress
+	rm -rf latest.tar.gz wordpress
 
 	#Inport env variables in the config file
 	sed -i "s/username_here/$MYSQL_USER/g" wp-config-sample.php
