@@ -26,18 +26,36 @@ services:
   #   env_file:
   #     - .env
 
-wordpress:
-  container_name: wordpress
-  #Create a depedency between the 2 container, db will be launched before
-  # depends_on:
-  #   - mariadb
-  build:
-    context: ./requirements/wordpress
-    dockerfile: Dockerfile
-  restart: always
-  env_file:
-    - .env
-  volumes:
-    - wordpress_data:/var/www/html
-  networks:
-    - network
+  wordpress:
+    container_name: wordpress
+    #Create a depedency between the 2 container, db will be launched before
+    # depends_on:
+    #   - mariadb
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - network
+
+volumes:
+  # mariadb_data:
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     device: /home/safoh/data/mysql
+  #     o: bind
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/safoh/data/wordpress
+      o: bind
+
+networks:
+  network:
+    driver:
