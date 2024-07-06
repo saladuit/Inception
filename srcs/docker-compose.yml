@@ -53,9 +53,9 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/safoh/data/wordpress
+      device: /home/safoh/sgoinfre/data/wordpress
       o: bind
 
 networks:
   network:
-    driver:
+    driver: bridge
