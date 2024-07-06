@@ -5,7 +5,7 @@ services:
     container_name: nginx
     build: ./requirements/nginx
     ports:
-      - 8443:443
+      - 8443:443 # TODO: revert this to 443
     volumes:
       - wordpress_data:/var/www/html
     restart: always
